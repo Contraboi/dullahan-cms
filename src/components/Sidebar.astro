@@ -1,0 +1,31 @@
+---
+
+---
+
+<nav class="bg-[#161618] h-screen pt-12 px-9">
+    <div class="w-52 ml-auto flex flex-col gap-4 mt-4">
+        <hr>
+        <h2>Getting started</h2>
+        <a href="/" class="text-primary text-sm">Introduction</a>
+    </div>
+</nav>
+<style>
+    hr {
+        border: 1px solid rgba(82, 82, 89, .32);
+    }
+
+    nav{
+        width: 270px;
+    }
+
+    @media (min-width: 1440px) {
+        nav {
+            padding-left: max(32px, calc((100% - (1440px - 64px)) / 2));
+            width: calc((100% - (1440px - 64px)) / 2 + 270px - 32px);
+        }
+    }
+
+
+
+</style>
+
