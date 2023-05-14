@@ -1,20 +1,18 @@
 ---
 import Button from './Button.astro';
 import dullahanImage from '../../public/Dullahan.png';
+
+const {title, subtitle, description} = Astro.props;
 ---
 
 <div class="flex">
     <div class="w-1/2">
-        <h1 class="text-6xl mb-2 gradient">Dullahan
-            CMS</h1>
-        <h2 class="text-4xl font-extralight mb-3">the Headless monster that brings mythical power to your content</h2>
-        <p class="text-xl text-[#C1C1C1] font-extralight mb-6">Revolutionize your content strategy with the flexibility
-            and
-            power with Dullahan, delivering your content
-            seamlessly across multiple channels and devices.</p>
+        <h1 class="text-6xl mb-2 gradient">{title}</h1>
+        <h2 class="text-4xl font-extralight mb-3">{subtitle}</h2>
+        <p class="text-xl text-[#C1C1C1] font-extralight mb-6">{description}</p>
         <div class="flex gap-4">
             <Button class="mt-5 mr-5" href="/docs" variant="primary">Coming soon!</Button>
-            <Button class="mt-5" href="/docs" variant="secondary">View on GitHub</Button>
+            <Button class="mt-5" href="/docs">View on GitHub</Button>
         </div>
     </div>
     <div class="w-1/2">
