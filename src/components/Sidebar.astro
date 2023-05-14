@@ -1,12 +1,56 @@
 ---
+type Blog = {
+    id: string;
+    content: {
+        main: {
+            title: string;
+            description: string;
+            excerpt: string;
 
+        };
+        sideBar: {
+            category: string;
+            slug: string;
+
+        };
+    };
+};
+
+const response = await fetch("http://localhost:4000/api/collections/documentation", {
+    headers: {
+        Accept: "application/json",
+    },
+});
+
+function onlyUnique(value, index, array) {
+    return array.indexOf(value) === index;
+}
+
+const collections = (await response.json()).collections as Blog[];
+const categories = collections.map((collection) => collection.content.sideBar.category)
+    .filter(onlyUnique);
+
+const {currentPageSlug} = Astro.props;
+console.log(currentPageSlug)
 ---
 
 <nav class="bg-[#161618] h-screen pt-12 px-9">
     <div class="w-52 ml-auto flex flex-col gap-4 mt-4">
         <hr>
-        <h2>Getting started</h2>
-        <a href="/" class="text-primary text-sm">Introduction</a>
+        {categories.map((category) => (
+                <>
+                    <h2 class="text-lg">{category}</h2>
+                    {collections.map((collection) => {
+                        if (collection.content.sideBar.category === category) {
+                            return (
+                                    <a href={`/docs/${collection.content.sideBar.slug}`} class=`text-sm text-gray-400 ${currentPageSlug === collection.content.sideBar.slug && "text-primary"}`>
+                                        {collection.content.main.title}
+                                    </a>
+                            );
+                        }
+                    })}
+                </>
+        ))}
     </div>
 </nav>
 <style>
@@ -14,7 +58,7 @@
         border: 1px solid rgba(82, 82, 89, .32);
     }
 
-    nav{
+    nav {
         width: 270px;
     }
 
@@ -24,7 +68,6 @@
             width: calc((100% - (1440px - 64px)) / 2 + 270px - 32px);
         }
     }
-
 
 
 </style>

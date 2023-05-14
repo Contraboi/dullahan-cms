@@ -1,0 +1,138 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Header from '../../components/Header.astro'
+import Sidebar from '../../components/Sidebar.astro'
+
+type Blog = {
+    id: string;
+    content: {
+        main: {
+            title: string;
+            subtitle: string;
+            content: string;
+
+        };
+        sideBar: {
+            category: string;
+            slug: string;
+
+        };
+    };
+};
+export async function getStaticPaths() {
+    const res = await fetch("http://localhost:4000/api/collections/documentation", {
+        headers: {
+            Accept: "application/json",
+        },
+    })
+    const collections: Blog[] = (await res.json()).collections;
+
+    return collections.map((collection) => ({
+        params: {
+            slug: collection.content.sideBar.slug,
+        },
+        props: {
+            collection,
+        }
+    }));
+}
+
+
+const {collection} = Astro.props as { collection: Blog };
+---
+<Layout title="Documentation - Dullahan">
+    <Header/>
+    <div class="flex gap-3">
+        <Sidebar currentPageSlug={collection.content.sideBar.slug}/>
+        <main class="h-screen mt-16 overflow-y-scroll max-h-[90vh]">
+            <section class="mx-auto">
+                <h1>{collection.content.main.title}</h1>
+                <p>{collection.content.main.subtitle}</p>
+                <div set:html={collection.content.main.content} class="content"/>
+            </section>
+        </main>
+    </div>
+</Layout>
+
+<style is:global>
+
+    main {
+        width: 100%;
+    }
+
+    main::-webkit-scrollbar {
+    }
+
+    section {
+        margin-inline: auto;
+        max-width: 75ch;
+    }
+
+    main h1 {
+        letter-spacing: -.02em;
+        line-height: 40px;
+        font-size: 32px;
+        margin-bottom: 1rem;
+    }
+
+    .content {
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: -.01em;
+        max-width: 75ch;
+        margin: 2rem auto;
+    }
+
+    .content p {
+        margin: 16px 0;
+        line-height: 28px;
+    }
+
+    .content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: .5rem;
+        margin: 16px 0;
+    }
+
+    .content ul {
+        margin: 16px 0;
+        padding-left: 24px;
+    }
+
+    .content li {
+        margin: 8px 0;
+        line-height: 28px;
+        list-style-type: disc;
+    }
+
+    .content h2 {
+        margin: 48px 0 16px;
+        border-top: 1px solid rgba(82, 82, 89, .32);;
+        padding-top: 24px;
+        letter-spacing: -.02em;
+        line-height: 32px;
+        font-size: 24px;
+    }
+
+    h3 {
+        margin: 32px 0 0;
+        letter-spacing: -.01em;
+        line-height: 28px;
+        font-size: 20px;
+    }
+
+    pre, code {
+        display: block;
+        padding: 0 24px;
+        width: fit-content;
+        min-width: 100%;
+        line-height: 1.7;;
+        font-size: .5em;
+        color: rgba(255, 255, 245, .86);
+        background-color: #2e2e34;
+        border-radius: .25rem;
+
+    }
+
+</style>
