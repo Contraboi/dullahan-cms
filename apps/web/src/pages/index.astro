@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+
+type Card = {
+    title: string,
+    description: string,
+    url: string
+}
+type Homepage = {
+    title: "Dullahan CMS"
+
+    id: string,
+    content: {
+        main: {
+            title: string,
+            subtitle: string,
+            description: string
+        },
+        card1: Card,
+        card2: Card,
+        card3: Card
+    },
+}
+
+const res = await fetch("https://railway-node-production-8cbc.up.railway.app/api/collections/homepage", {
+    headers: {
+        Accept: "application/json",
+    },
+})
+const homepage: Homepage = (await res.json()).collections[0];
+---
+
+<Layout title="Dullahan - the Headless monster">
+    <Header/>
+    <main class="min-w-full h-screen mt-32 px-4">
+        <section class="max-w-6xl mx-auto">
+            <Hero title={homepage.content.main.title} subtitle={homepage.content.main.subtitle}
+                  description={homepage.content.main.description}/>
+            <ul role="list" class="link-card-grid">
+                <Card
+                        href={homepage.content.card1.url}
+                        title={homepage.content.card1.title}
+                        body={homepage.content.card1.description}
+                />
+                <Card
+                        href={homepage.content.card2.url}
+                        title={homepage.content.card2.title}
+                        body={homepage.content.card2.description}
+                />
+                <Card
+                        href={homepage.content.card3.url}
+                        title={homepage.content.card3.title}
+                        body={homepage.content.card3.description}
+                />
+            </ul>
+        </section>
+    </main>
+</Layout>
+
+<style>
+
+    .text-gradient {
+        background-image: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 400%;
+        background-position: 0%;
+    }
+
+    .link-card-grid {
+        margin-block: 10rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+        padding: 0;
+    }
+</style>
