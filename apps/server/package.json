@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "dev-server": "npx nodemon",
+    "dev": "npx nodemon",
     "build": "esbuild index=./src --bundle --minify --outdir=dist --packages=external --platform=node && npm run copy-files-to-dist",
     "start": "node dist",
     "copy-files-to-dist": "mkdir -p dist/content && mkdir -p dist/resources && cp -a resources/. dist/resources && cp -a content/. dist/content"
@@ -21,7 +21,8 @@
     "express": "^4.17.1",
     "uuid": "^9.0.0",
     "vercel": "^29.3.0",
-    "zod": "^3.11.6"
+    "zod": "^3.11.6",
+    "body-parser": "^1.20.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
