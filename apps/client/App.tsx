@@ -24,6 +24,7 @@ import { trpc } from "./utils/trpc";
 import { Assets } from "./src/pages/assets/Assets";
 import { Components } from "./src/pages/component/Components";
 import { Component } from "./src/pages/component/Component";
+import { serverUrl } from "../server/src";
 
 type MainLinksDataType = {
   icon: any;
@@ -57,10 +58,10 @@ export const App = () => {
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: "http://localhost:4000/trpc",
+          url: serverUrl + "trpc",
         }),
       ],
-    })
+    }),
   );
 
   return (

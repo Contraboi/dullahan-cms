@@ -4,8 +4,6 @@ import { FilterCondition, switchFilterCondition } from "./Filter";
 import * as path from "path";
 import process from "process";
 
-const isProd = process.env.NODE_MODE === "prod";
-
 export default class JsonHandler {
   constructor() {}
 
@@ -16,6 +14,7 @@ export default class JsonHandler {
     keyOfData: K,
   ): DataResponse<null> {
     const path = this.getDirPath() + `${filePath}/${fileName}.json`;
+    console.log(path, "path");
 
     if (existsSync(path)) {
       console.log("File already exists");
@@ -45,6 +44,7 @@ export default class JsonHandler {
   ): Promise<Array<T> | undefined> {
     try {
       const path = this.getDirPath() + directoryPath;
+      console.log(path);
 
       const files = await promises.readdir(path);
       const jsonFiles = files.filter((file) => file.endsWith(".json"));
