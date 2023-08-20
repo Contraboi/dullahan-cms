@@ -1,0 +1,43 @@
+{
+  "handle": "documentation",
+  "title": "Documentation",
+  "templateData": {
+    "main": {
+      "title": {
+        "section": "main",
+        "display": "Title",
+        "handle": "title",
+        "required": true,
+        "type": "text"
+      },
+      "subtitle": {
+        "section": "main",
+        "display": "Subtitle",
+        "handle": "subtitle",
+        "required": false,
+        "type": "text"
+      },
+      "content": {
+        "section": "main",
+        "display": "Content",
+        "handle": "content",
+        "type": "textEditor"
+      }
+    },
+    "sideBar": {
+      "slug": {
+        "display": "Slug",
+        "handle": "slug",
+        "required": true,
+        "type": "text"
+      },
+      "category": {
+        "section": "sideBar",
+        "display": "category",
+        "handle": "category",
+        "required": false,
+        "type": "text"
+      }
+    }
+  }
+}

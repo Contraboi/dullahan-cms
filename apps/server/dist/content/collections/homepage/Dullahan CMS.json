@@ -1,0 +1,32 @@
+{
+  "id": "4e6b8bd4-f8de-467b-a8c3-bfbb6ece3d2b",
+  "apiUrl": "",
+  "content": {
+    "main": {
+      "title": "Dullahan CMS",
+      "subtitle": "the Headless monster that brings mythical power to your content",
+      "description": "Revolutionize your content strategy with the flexibility and power with Dullahan, delivering your content seamlessly across multiple channels and devices."
+    },
+    "card1": {
+      "title": "Documentation",
+      "description": "Let's get down to business",
+      "url": "/quick-start-guide"
+    },
+    "card2": {
+      "title": "Join our community",
+      "description": "Coming soon",
+      "url": "#"
+    },
+    "card3": {
+      "title": "Want to help us? ❤\uFE0F",
+      "description": "Reach to us",
+      "url": "#"
+    }
+  },
+  "template": "homepage",
+  "createdAt": "2023-05-06T12:53:32.294Z",
+  "updatedAt": "2023-05-14T00:44:21.939Z",
+  "published": false,
+  "updatedBy": "admin",
+  "title": "Dullahan CMS"
+}

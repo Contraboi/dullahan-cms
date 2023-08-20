@@ -1,0 +1,21 @@
+{
+  "id": "af96dd78-a068-4617-8f1e-9027a17c6336",
+  "apiUrl": "",
+  "content": {
+    "main": {
+      "title": "REST API",
+      "subtitle": "The Content REST API is currently a read-only API for delivering content from Dullahan to your frontend, external apps, SPAs, and numerous other possible sources. Content is delivered as JSON data.",
+      "content": "<h2>Endpoints</h2><pre class=\"ql-syntax\" spellcheck=\"false\">https://yourdomain.tld/api/{endpoint}\n</pre><p>You may send requests to the following endpoints:</p><ul><li><strong>Collections - </strong>/api/collection/${collectionHandle}</li><li><strong>Navigations - </strong>Coming soon</li><li><strong>Taxonomies - </strong>Coming soon</li></ul><h2>Filtering</h2><p>You may filter results by using the filter&nbsp;query parameter.</p><pre class=\"ql-syntax\" spellcheck=\"false\">/endpoint?filter[{field}:{condition}]={value}\n</pre><p><br></p><p>You may use the conditions available to the collection tag. eg. contains, is, isnt (or not), etc. For example:</p><pre class=\"ql-syntax\" spellcheck=\"false\">/endpoint?filter[title:contains]=awesome&amp;filter[fatured:is]=true\n</pre><p><br></p><p>You can also chain values like you would do in JavaScript with objects</p><pre class=\"ql-syntax\" spellcheck=\"false\">/endpoint?filter[section.card.title:is]=rickRolled\n</pre><h3><br></h3><h2>Conditions</h2><p>Conditions allow you to filter the results of your content tags, using the data inside them, much like WHERE clauses do with SQL.</p><ul><li><strong>is - </strong>Include if field is equal to value.</li><li><strong>not - </strong>Include if field is not equal to value.</li><li><strong>contains - </strong>Include if field contains value.</li><li><strong>startsWith - </strong>Include if field value starts with the provided string.</li><li><strong>endsWIth - </strong>Include if field value ends with the provided string.</li><li><strong>doesntSratWith - </strong>Include if field value does not start with the provided string.</li><li><strong>doesntEndWith - </strong>&nbsp;Include if field value does not end with the provided string.</li><li><strong>lt - </strong>Include if field value is less than the provided value.</li><li><strong>gt - </strong>Include if field value is greater than the provided value.</li><li><strong>lte - </strong>&nbsp;Include if field value is less than or equal to the provided value.</li><li><strong>gte - </strong>Include if field value is greater than or equal to the provided value.</li><li><strong>matches - </strong>Include if field value matches the provided regular expression.</li><li><strong>doesntMatch -</strong>Include if field value does not match the provided regular expression.</li></ul>"
+    },
+    "sideBar": {
+      "slug": "rest-api",
+      "category": "Core Concepts"
+    }
+  },
+  "template": "documentation",
+  "createdAt": "2023-05-13T21:37:23.983Z",
+  "updatedAt": "2023-05-14T00:25:32.185Z",
+  "published": false,
+  "updatedBy": "admin",
+  "title": "REST API"
+}
