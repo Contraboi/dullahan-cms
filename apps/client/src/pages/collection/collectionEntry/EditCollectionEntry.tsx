@@ -34,7 +34,7 @@ export const EditCollectionEntry = () => {
           setCollectionContent(content);
         }
       },
-    },
+    }
   );
   const updateCollectionEntry = trpc.collection.updateEntry.useMutation({
     onSuccess: () => {
@@ -46,13 +46,13 @@ export const EditCollectionEntry = () => {
 
   const sideBarData = Object.fromEntries(
     Object.entries(template.data.templateData).filter(([key]) =>
-      key.includes("sideBar"),
-    ),
+      key.includes("sideBar")
+    )
   );
   const templateDataWithoutSideBar = Object.fromEntries(
     Object.entries(template.data.templateData).filter(
-      ([key]) => !key.includes("sideBar"),
-    ),
+      ([key]) => !key.includes("sideBar")
+    )
   );
 
   return (

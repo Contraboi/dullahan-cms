@@ -15,7 +15,7 @@ app.use(
   "/trpc",
   trpcExpress.createExpressMiddleware({
     router: appRouter,
-  }),
+  })
 );
 
 app.listen(port, () => {

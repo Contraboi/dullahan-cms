@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "prod-build": "npm i && npm run build",
     "start": "vite preview"
   },
   "dependencies": {

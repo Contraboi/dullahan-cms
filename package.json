@@ -5,7 +5,8 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "start": "cd ./apps/client && npm run start && cd ../client && npm run start"
+    "start": "turbo run start",
+    "asd": "turbo run asd"
   },
   "devDependencies": {
     "@turbo/gen": "^1.9.7",

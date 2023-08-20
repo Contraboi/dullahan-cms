@@ -110,5 +110,5 @@ export const additionalFilters = [
   "fields", //  Only return the specified fields.
 ];
 
-export type FilterCondition = typeof filterConditions[number];
-export type AdditionalFilter = typeof additionalFilters[number];
+export type FilterCondition = (typeof filterConditions)[number];
+export type AdditionalFilter = (typeof additionalFilters)[number];

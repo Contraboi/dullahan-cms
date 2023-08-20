@@ -29,13 +29,13 @@ export const CreateCollectionEntry = () => {
 
   const sideBarData: { [key: string]: FieldTypes } = Object.fromEntries(
     Object.entries(template.data.templateData).filter(([key]) =>
-      key.includes("sideBar"),
-    ),
+      key.includes("sideBar")
+    )
   );
   const templateDataWithoutSideBar = Object.fromEntries(
     Object.entries(template.data.templateData).filter(
-      ([key]) => !key.includes("sideBar"),
-    ),
+      ([key]) => !key.includes("sideBar")
+    )
   );
   console.log(sideBarData);
   const saveCollectionEntry = async () => {

@@ -18,7 +18,7 @@ export const DynamicLinks = ({ dynamicLinks, path }: DynamicLinksProps) => {
         <Link
           className={cx(classes.link, {
             [classes.linkActive]: location.pathname.includes(
-              `/${path}/${link.handle}`,
+              `/${path}/${link.handle}`
             ),
           })}
           to={`/${path}/${link.handle}`}

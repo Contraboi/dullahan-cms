@@ -21,7 +21,7 @@ export const MainLinks = () => {
             <UnstyledButton
               className={cx(classes.mainLink, {
                 [classes.mainLinkActive]: location.pathname.includes(
-                  mainLinksData[key].path,
+                  mainLinksData[key].path
                 ),
               })}
             >
