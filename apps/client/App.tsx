@@ -24,7 +24,6 @@ import { trpc } from "./utils/trpc";
 import { Assets } from "./src/pages/assets/Assets";
 import { Components } from "./src/pages/component/Components";
 import { Component } from "./src/pages/component/Component";
-import { serverUrl } from "../server/src";
 
 type MainLinksDataType = {
   icon: any;
@@ -53,12 +52,13 @@ export const mainLinksData: { [key: string]: MainLinksDataType } = {
 };
 
 export const App = () => {
+  console.log("window.location.host", window.location.host);
   const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() =>
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: serverUrl + "trpc",
+          url: "https://dullahan-cms-production.up.railway.app/" + "trpc",
         }),
       ],
     }),
