@@ -4,6 +4,8 @@ import { FilterCondition, switchFilterCondition } from "./Filter";
 import * as path from "path";
 import process from "process";
 
+const isProd = process.env.NODE_MODE === "prod";
+
 export default class JsonHandler {
   constructor() {}
 
@@ -11,9 +13,9 @@ export default class JsonHandler {
     filePath: string,
     fileName: string,
     fileData: T,
-    keyOfData: K
+    keyOfData: K,
   ): DataResponse<null> {
-    const path = process.cwd() + `${filePath}/${fileName}.json`;
+    const path = this.getDirPath() + `${filePath}/${fileName}.json`;
 
     if (existsSync(path)) {
       console.log("File already exists");
@@ -39,28 +41,27 @@ export default class JsonHandler {
   }
 
   static async getAllFromDir<T>(
-    directoryPath: string
+    directoryPath: string,
   ): Promise<Array<T> | undefined> {
     try {
-      const files = await promises.readdir(directoryPath);
+      const path = this.getDirPath() + directoryPath;
+
+      const files = await promises.readdir(path);
       const jsonFiles = files.filter((file) => file.endsWith(".json"));
       return jsonFiles.map((file) => {
-        const rawData = readFileSync(directoryPath + "/" + file);
+        const rawData = readFileSync(path + "/" + file);
         return JSON.parse(rawData.toString());
       });
     } catch (e) {
-      console.error(
-        "Something went wrong with reading: asd" + "asd" + process.cwd(),
-        e
-      );
+      console.error("Something went wrong with reading:" + path, e);
     }
   }
 
   static async getOneFromDir<T>(
     filePath: string,
-    fileName: string
+    fileName: string,
   ): Promise<T | undefined> {
-    const path = `${filePath}/${fileName}.json`;
+    const path = this.getDirPath() + `${filePath}/${fileName}.json`;
     console.log(path, "path");
 
     if (!existsSync(path)) {
@@ -78,10 +79,10 @@ export default class JsonHandler {
   static async renameJson(
     filePath: string,
     fileName: string,
-    newFileName: string
+    newFileName: string,
   ) {
-    const path = `${filePath}/${fileName}.json`;
-    const newPath = `${filePath}/${newFileName}.json`;
+    const path = this.getDirPath() + `${filePath}/${fileName}.json`;
+    const newPath = this.getDirPath() + `${filePath}/${newFileName}.json`;
 
     if (!existsSync(path)) {
       console.log("File does not exist");
@@ -99,9 +100,9 @@ export default class JsonHandler {
   static async updateJson<T>(
     filePath: string,
     fileName: string,
-    updatedData: Partial<T>
+    updatedData: Partial<T>,
   ): Promise<DataResponse<null>> {
-    const path = `${filePath}/${fileName}.json`;
+    const path = this.getDirPath() + `${filePath}/${fileName}.json`;
 
     const currentJSON = await this.getOneFromDir(filePath, fileName);
     if (!currentJSON)
@@ -121,9 +122,9 @@ export default class JsonHandler {
       key: string;
       value: string;
     },
-    condition: FilterCondition = "is"
+    condition: FilterCondition = "is",
   ): Promise<T | Array<T> | undefined | null> {
-    const path = `${filePath}/${fileName}`;
+    const path = this.getDirPath() + `${filePath}/${fileName}`;
 
     if (!existsSync(path)) {
       console.log("Collection does not exist");
@@ -135,7 +136,7 @@ export default class JsonHandler {
       const files = await promises.readdir(path);
       for (const file of files) {
         const data: T = JSON.parse(
-          (await promises.readFile(`${path}/${file}`)).toString()
+          (await promises.readFile(`${path}/${file}`)).toString(),
         );
         const filteredData = switchFilterCondition(condition, searchBy, data);
         if (filteredData) allMatchingFiles.push(data);
@@ -147,5 +148,9 @@ export default class JsonHandler {
     } catch (e) {
       console.log(e);
     }
+  }
+
+  static getDirPath() {
+    return isProd ? process.cwd().replace("/dist", "") : process.cwd();
   }
 }

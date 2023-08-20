@@ -3,6 +3,11 @@
     "**/.env.*local"
   ],
   "pipeline": {
+    "start": {
+      "dependsOn": [
+        "^start"
+      ]
+    },
     "build": {
       "dependsOn": [
         "^build"
