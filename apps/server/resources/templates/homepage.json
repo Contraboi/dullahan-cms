@@ -1,0 +1,114 @@
+{
+  "handle": "homepage",
+  "title": "Homepage",
+  "templateData": {
+    "main": {
+      "title": {
+        "section": "main",
+        "display": "Title",
+        "handle": "title",
+        "required": true,
+        "type": "text"
+      },
+      "subtitle": {
+        "section": "main",
+        "display": "Subtitle",
+        "handle": "subtitle",
+        "required": false,
+        "type": "text"
+      },
+      "description": {
+        "section": "main",
+        "display": "Description",
+        "handle": "description",
+        "type": "textarea"
+      }
+    },
+    "sideBar": {
+      "slug": {
+        "display": "Slug",
+        "handle": "slug",
+        "required": true,
+        "type": "text"
+      }
+    },
+    "card1": {
+      "card": {
+        "title": {
+          "section": "card",
+          "display": "Title",
+          "handle": "title",
+          "required": false,
+          "type": "text"
+        },
+        "description": {
+          "section": "card",
+          "display": "Description",
+          "handle": "description",
+          "required": false,
+          "type": "text"
+        },
+        "url": {
+          "section": "card",
+          "display": "Url",
+          "handle": "url",
+          "required": false,
+          "type": "text"
+        },
+        "type": "component"
+      }
+    },
+    "card2": {
+      "card": {
+        "title": {
+          "section": "card",
+          "display": "Title",
+          "handle": "title",
+          "required": false,
+          "type": "text"
+        },
+        "description": {
+          "section": "card",
+          "display": "Description",
+          "handle": "description",
+          "required": false,
+          "type": "text"
+        },
+        "url": {
+          "section": "card",
+          "display": "Url",
+          "handle": "url",
+          "required": false,
+          "type": "text"
+        },
+        "type": "component"
+      }
+    },
+    "card3": {
+      "card": {
+        "title": {
+          "section": "card",
+          "display": "Title",
+          "handle": "title",
+          "required": false,
+          "type": "text"
+        },
+        "description": {
+          "section": "card",
+          "display": "Description",
+          "handle": "description",
+          "required": false,
+          "type": "text"
+        },
+        "url": {
+          "section": "card",
+          "display": "Url",
+          "handle": "url",
+          "required": false,
+          "type": "text"
+        },
+        "type": "component"
+      }
+    }
+  }
+}

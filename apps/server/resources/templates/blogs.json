@@ -1,0 +1,37 @@
+{
+  "handle": "blogs",
+  "title": "Blogs",
+  "templateData": {
+    "main": {
+      "title": {
+        "section": "main",
+        "display": "Title",
+        "handle": "title",
+        "required": true,
+        "type": "text"
+      },
+      "excerpt": {
+        "section": "main",
+        "display": "Excerpt",
+        "handle": "excerpt",
+        "type": "textarea",
+        "instructions": "This is a short excerpt from the post"
+      },
+      "content": {
+        "section": "main",
+        "display": "Content",
+        "handle": "content",
+        "type": "textEditor",
+        "required": true
+      }
+    },
+    "sideBar": {
+      "slug": {
+        "display": "Slug",
+        "handle": "slug",
+        "required": true,
+        "type": "text"
+      }
+    }
+  }
+}

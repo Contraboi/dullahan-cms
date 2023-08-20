@@ -1,0 +1,37 @@
+{
+  "name": "cms-server",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "npx nodemon",
+    "build": "esbuild index=./src --bundle --minify --outdir=dist --packages=external --platform=node && npm run copy-files-to-dist",
+    "start": "node dist",
+    "copy-files-to-dist": "mkdir -p dist/content && mkdir -p dist/resources && cp -a resources/. dist/resources && cp -a content/. dist/content"
+  },
+  "pre-commit": [
+    "ts.check",
+    "build",
+    "add-build"
+  ],
+  "main": "index.js",
+  "dependencies": {
+    "esbuild": "^0.17.18",
+    "@trpc/server": "^10.7.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "uuid": "^9.0.0",
+    "vercel": "^29.3.0",
+    "zod": "^3.11.6",
+    "body-parser": "^1.20.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/uuid": "^9.0.0",
+    "nodemon": "^2.0.22",
+    "pre-commit": "^1.2.2",
+    "rimraf": "^5.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}

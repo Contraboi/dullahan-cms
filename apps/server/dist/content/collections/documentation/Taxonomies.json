@@ -1,0 +1,20 @@
+{
+  "id": "8282b0b4-e5cf-44a2-93b9-01944ee56d87",
+  "apiUrl": "",
+  "content": {
+    "main": {
+      "title": "Taxonomies",
+      "subtitle": "A taxonomy is a system of classifying data around a set of unique characteristics.",
+      "content": "<h2>Coming soon</h2>"
+    },
+    "sideBar": {
+      "slug": "taxonomies",
+      "category": "Core Concepts"
+    }
+  },
+  "template": "documentation",
+  "createdAt": "2023-05-13T21:26:11.020Z",
+  "updatedAt": "2023-05-13T21:26:11.020Z",
+  "published": false,
+  "updatedBy": "admin"
+}
