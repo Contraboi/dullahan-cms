@@ -151,6 +151,6 @@ export default class JsonHandler {
   }
 
   static getDirPath() {
-    return isProd ? process.cwd().replace("/dist", "") : process.cwd();
+    return process.cwd();
   }
 }

@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "npx nodemon",
-    "build": "esbuild index=./src --bundle --minify --outdir=dist --packages=external --platform=node",
+    "build": "esbuild index=./src --bundle --minify --outdir=dist --packages=external --platform=node && npm run copy-files-to-dist",
+    "copy-files-to-dist": "mkdir -p dist/content && mkdir -p dist/resources && cp -a resources/. dist/resources && cp -a content/. dist/content",
     "start": "node dist"
   },
   "pre-commit": [
