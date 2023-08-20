@@ -11,10 +11,8 @@ const port = 4000;
 app.use(cors());
 
 app.use("/", (req, res) => {
-  res.status(200).send("Hello World!");
+  res.status(200).json({ message: "Hello world" });
 });
-
-app.use("/api", headlessRouter);
 
 app.use(
   "/trpc",
@@ -23,6 +21,8 @@ app.use(
     createContext,
   }),
 );
+
+app.use("/api", headlessRouter);
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
