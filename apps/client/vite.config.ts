@@ -8,6 +8,8 @@ export default defineConfig({
     outDir: "dist",
   },
   server: {
+    origin: "http://0.0.0.0:3000",
+    port: 3000,
     proxy: {
       "/trpc": {
         target: "http://localhost:4000/",
