@@ -10,6 +10,10 @@ const port = 4000;
 
 app.use(cors());
 
+app.use("/", (req, res) => {
+  res.status(200).send("Hello World!");
+});
+
 app.use("/api", headlessRouter);
 
 app.use(
