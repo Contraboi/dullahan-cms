@@ -58,7 +58,7 @@ export const App = () => {
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: "https://dullahan-cms-production.up.railway.app/" + "trpc",
+          url: " http://192.168.0.25:4000/" + "trpc",
         }),
       ],
     }),
