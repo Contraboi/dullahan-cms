@@ -13,7 +13,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       "/trpc": {
-        target: "http://172.17.0.228:4000",
+        target: "http://localhost:4000",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/trpc/, ""),
       },

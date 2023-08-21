@@ -4,17 +4,14 @@ import * as trpcExpress from "@trpc/server/adapters/express";
 import headlessRouter from "./routes";
 import { appRouter } from "./trpc/router/_app";
 import { createContext } from "./trpc/trpc";
+import path from "path";
 
 const app = express();
 const port = process.env.PORT || 4000;
 
+app.use(express.static(path.join(__dirname, "..", "..", "client", "dist")));
+
 app.use(cors());
-app.use(express.static("../../client/dist"));
-
-app.use("/", (req, res) => {
-  res.status(200).json({ message: "Hello world" });
-});
-
 app.use(
   "/trpc",
   trpcExpress.createExpressMiddleware({
