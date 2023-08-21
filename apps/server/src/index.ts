@@ -9,6 +9,7 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 app.use(cors());
+app.use(express.static("../../client/dist"));
 
 app.use("/", (req, res) => {
   res.status(200).json({ message: "Hello world" });
