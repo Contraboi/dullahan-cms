@@ -21,6 +21,8 @@ app.use(
   }),
 );
 
+app.use("/api", headlessRouter);
+
 app.get("*", (req, res) => {
   const __dirname = path.resolve();
   const pathToIndex = path.join(
@@ -34,8 +36,6 @@ app.get("*", (req, res) => {
 
   res.send(raw);
 });
-
-app.use("/api", headlessRouter);
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
