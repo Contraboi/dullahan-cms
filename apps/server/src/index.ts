@@ -5,6 +5,7 @@ import headlessRouter from "./routes";
 import { appRouter } from "./trpc/router/_app";
 import { createContext } from "./trpc/trpc";
 import path from "path";
+import fs from "fs";
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -19,6 +20,20 @@ app.use(
     createContext,
   }),
 );
+
+app.get("*", (req, res) => {
+  const __dirname = path.resolve();
+  const pathToIndex = path.join(
+    __dirname,
+    "..",
+    "client",
+    "dist",
+    "index.html",
+  );
+  const raw = fs.readFileSync(pathToIndex, { encoding: "utf8", flag: "r" });
+
+  res.send(raw);
+});
 
 app.use("/api", headlessRouter);
 
