@@ -27,7 +27,7 @@ headlessRouter.get("/collections/:collectionHandle", async (req, res) => {
     collectionHandle,
     key,
     queryValues[0] as string,
-    condition
+    condition,
   );
 
   if (!collection) return error.notFound();
